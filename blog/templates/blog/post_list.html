@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POST LIST</title>
+    <style>
+        #title {
+            font-size: 64px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .post {
+            width: 400px;
+            border: 3px solid #BDBDBD;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+
+            display: inline-block;
+        }
+        #imgdiv {
+            width: 350px;
+            text-align: center;
+            margin: 20px;
+        }
+        img {
+            width  auto;
+            height: auto;
+        }
+        .des {
+            color: firebrick;
+            font-weight: bold;
+        }
+
+    </style>
+    {% load staticfiles %}
+</head>
+<body>
+    <h1 id="title">Blog <span id="small">made by KBJ</span></h1>
+    <div id="content">
+
+        {% for post in object_list %}
+        <div class="post">
+        <p class="des">{{ post.title }}</p>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <p> <span class="des"> CREATE DATE :</span> {{ post.create_date }} </p>
+        <p> <span class="des"> MODIFY DATE :</span> {{ post.modify_date }} </p>
+        </div>
+        {% endfor %}
+     </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>DJANGO BOOKMARK INDEX PAGE</title>
+    <style>
+        span {
+            font-size: 64px;
+            color: firebrick;
+
+        }
+        *{
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        ul {
+            display: inline-block;
+            list-style: none;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: darkslategray;
+            padding: 10px 20px;
+        }
+        a:hover {
+            background-color: dimgray;
+            color: darkkhaki;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <h1><span>최</span>고로 <span>애</span>정하는 <span>유 </span>튜브</h1>
+    <ul>
+
+        {% for bookmark in object_list %}
+
+        <li><a href=" {% url 'detail' bookmark.id %} "> {{bookmark }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>youtube video</title>
+</head>
+<body>
+<div id="content">
+    <h1>youtube video</h1>
+    <ul>
+
+        {% for youtube in object_list %}
+        <li><a href= {{ youtube.url }} > {{youtube }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
