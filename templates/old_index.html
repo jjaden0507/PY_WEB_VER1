@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500&display=swap" rel="stylesheet">
+    <title>django</title>
+    <style>
+        .main_text {
+         font-family: 'MuseoModerno', cursive;
+         position: absolute;
+         text-align: center;
+         transform: translate(-50%, -50%);
+         color: white;
+         width: 100%;
+
+        }
+        #title{
+            left: 50%;
+            top: 20%;
+            font-size: 60px;
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red );
+           # -webkit-background-clip: text; #color: transparent;
+        }
+        #made{
+            left: 50%;
+            top: 45%;
+            font-size: 25px;
+        }
+        #menu{
+            left: 50%;
+            top: 35%;
+            font-size: 30px;
+        }
+        li {
+            display: inline-block;
+        }
+        a {
+            text-decoration: none;
+            color: yellowgreen;
+            margin: 30px;
+        }
+        #title:hover {
+            transition: 2s;
+            color: red;
+        }
+
+        #auth2 {
+            left: 50%;
+            top:10%;
+        }
+        .auth_menu{
+            font-size: 25px;
+            color: fuchasia;
+         }
+         #username {
+            color: greenyellow;
+        }
+
+        #auth1 {
+            left: 50%;
+            top: 10%;
+        }
+
+        #auth2 {
+            left: 50%;
+            top: 10%
+        }
+
+        .auth_menu {
+            font-size: 25px;
+            color: fuchsia;
+        }
+
+        .greet {
+            font-size: 25px;
+        }
+
+        .userID {
+            color: greenyellow;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+   <iframe width="100%" height="660" src="https://www.youtube.com/embed/_tKd9Vcky14?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <h1 class="main_text" id="title">DJANGO FRAMEWORK</h1>
+   <h1 class="main_text" id="made">Made by
+       <span id="username">KBJ</span> &amp;
+       <span id="dlab">DLAB</span>
+   </h1>
+   <ul class="main_text" id="menu">
+       <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+       <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+       <li><a href="{% url 'blog_index'%}">BLOG</a></li>
+   </ul>
+
+   {% if user.is_active %}
+   <ul class="main_text" id="auth1">
+       <p class="greet">HELLO, <strong class="userID">{{ user.get_username}}</strong></p>
+       <li><a href="{% url 'logout' %}" class="auth_menu">SIGN OUT</a></li>
+       <li><a href="{% url 'password_change' %}" class="auth_menu">PW CHANGE</a></li>
+   </ul>
+   {% else %}
+   <ul class="main_text" id="auth2">
+       <p class="greet">HELLO, <strong class="userID">Anonymous</strong></p>
+       <li><a href="{% url 'login' %}" class="auth_menu">SIGN IN</a></li>
+       <li><a href="{% url 'register' %}" class="auth_menu">SIGN UP</a></li>
+   </ul>
+   {% endif %}
+
+</body>
+</html>

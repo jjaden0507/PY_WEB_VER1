@@ -1,112 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500&display=swap" rel="stylesheet">
-    <title>django</title>
-    <style>
-        .main_text {
-         font-family: 'MuseoModerno', cursive;
-         position: absolute;
-         text-align: center;
-         transform: translate(-50%, -50%);
-         color: white;
-         width: 100%;
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        {% load staticfiles %}
+
+    <style>
+        * {
+            text-align: center;
+            color: white;
         }
-        #title{
-            left: 50%;
-            top: 20%;
-            font-size: 60px;
-            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red );
-           # -webkit-background-clip: text; #color: transparent;
-        }
-        #made{
-            left: 50%;
-            top: 45%;
-            font-size: 25px;
-        }
-        #menu{
-            left: 50%;
-            top: 35%;
-            font-size: 30px;
-        }
-        li {
-            display: inline-block;
+        .container-fluid {
+            position: absolute;
+            top: 10%;
         }
         a {
             text-decoration: none;
-            color: yellowgreen;
-            margin: 30px;
-        }
-        #title:hover {
-            transition: 2s;
-            color: red;
+            color: white;
         }
 
-        #auth2 {
-            left: 50%;
-            top:10%;
-        }
-        .auth_menu{
-            font-size: 25px;
-            color: fuchasia;
-         }
-         #username {
-            color: greenyellow;
-        }
 
-        #auth1 {
-            left: 50%;
-            top: 10%;
+        .auth {
+            height: 120px;
         }
-
-        #auth2 {
-            left: 50%;
-            top: 10%
+        .auth a{
+            font-size: 32px;
+            color: darkorange;
         }
-
-        .auth_menu {
-            font-size: 25px;
-            color: fuchsia;
-        }
-
-        .greet {
-            font-size: 25px;
-        }
-
-        .userID {
-            color: greenyellow;
+        .auth a:hover {
+            transition: 0.1s;
             font-size: 35px;
+            text-decoration: none;
+            font-weight: bold;
+            color: firebrick;
         }
-    </style>
-</head>
-<body>
-   <iframe width="100%" height="660" src="https://www.youtube.com/embed/_tKd9Vcky14?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-   <h1 class="main_text" id="title">DJANGO FRAMEWORK</h1>
-   <h1 class="main_text" id="made">Made by
-       <span id="username">KBJ</span> &amp;
-       <span id="dlab">DLAB</span>
-   </h1>
-   <ul class="main_text" id="menu">
-       <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
-       <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
-       <li><a href="{% url 'blog_index'%}">BLOG</a></li>
-   </ul>
+        .hello strong {
+            font-size: 48px;
+            color: firebrick;
+        }
+        .hello, #django {
+            font-size: 32px;
+        }
+        #made {
+            text-align: right;
+            font-size: 30px;
+        }
+        #garden {
+            text-align: left;
+            font-weight: bold;
+            color: firebrick;
+            font-size: 32px;
+        }
+        #menu a {
+            font-size: 32px;
+            color: darkorange;
+        }
+        #menu a:hover {
+            transition: 0.1s;
+            font-size: 35px;
+            text-decoration: none;
+            font-weight: bold;
+            color: firebrick;
+        }
+      </style>
 
-   {% if user.is_active %}
-   <ul class="main_text" id="auth1">
-       <p class="greet">HELLO, <strong class="userID">{{ user.get_username}}</strong></p>
-       <li><a href="{% url 'logout' %}" class="auth_menu">SIGN OUT</a></li>
-       <li><a href="{% url 'password_change' %}" class="auth_menu">PW CHANGE</a></li>
-   </ul>
-   {% else %}
-   <ul class="main_text" id="auth2">
-       <p class="greet">HELLO, <strong class="userID">Anonymous</strong></p>
-       <li><a href="{% url 'login' %}" class="auth_menu">SIGN IN</a></li>
-       <li><a href="{% url 'register' %}" class="auth_menu">SIGN UP</a></li>
-   </ul>
-   {% endif %}
+    <title>Index</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-</body>
+    <video autoplay muted loop width="100%">
+        <source src="{% static 'video/Time attack.mp4' %}">
+    </video>
+
+    <div class="container-fluid">
+      {% if user.is_active %}
+
+       <div class="row md main_text auth">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 hello">Hello, <strong>{{ user.get_username }}</strong></div>
+            <div class="col-md-3"></div>
+
+            <br>
+
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><a href="{% url 'logout' %}">LOG OUT</a></div>
+            <div class="col-md-3"><a href="{% url 'password_change' %}">PW CHANGE</a></div>
+            <div class="col-md-3"></div>
+       </div>
+
+       {% else %}
+
+       <div class="row md main_text auth">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 hello">Hello, <strong>Anonymous</strong></div>
+            <div class="col-md-3"></div>
+
+            <br>
+
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><a href="{% url 'login' %}">SIGN IN</a></div>
+            <div class="col-md-3"><a href="{% url 'register' %}">SIGN UP</a></div>
+            <div class="col-md-3"></div>
+       </div>
+
+       {% endif %}
+
+       <br><br><br>
+
+       <div class="row md main_text">
+           <div class="col-md-3"></div>
+           <div class="col-md-6" id="django">DJANGO FRAMEWORK</div>
+           <div class="col-md-3"></div>
+       </div>
+
+       <div class="row md main_text">
+           <div class="col-md-3"></div>
+           <div class="col-md-3" id="made">Made by</div>
+           <div class="col-md-3" id="garden">Jaden&Dlab</div>
+           <div class="col-md-3"></div>
+       </div>
+
+       <br>
+
+       <div class="row md main_text" id="menu">
+           <div class="col-md-3"><a href="{% url 'admin:index' %}">ADMIN</a></div>
+           <div class="col-md-3"><a href="{% url 'bookmark_index' %}">BOOKMARK</a></div>
+           <div class="col-md-3"><a href="{% url 'blog_index' %}">BLOG</a></div>
+           <div class="col-md-3"><a href="{% url 'django' %}">DJANGO</a></div>
+       </div>
+    </div>
+  </body>
 </html>

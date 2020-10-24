@@ -31,18 +31,29 @@
             color: firebrick;
             font-weight: bold;
         }
+        #Create {
+            text-align: center right;
+            margin-top: 25px;
+            margin-left: 600px;
+        }
+
 
     </style>
     {% load staticfiles %}
 </head>
 <body>
     <h1 id="title">Blog <span id="small">made by KBJ</span></h1>
+    <div id="Create">
+        <a href="{% url 'blog_create' %}">
+        <button>CREATE</button>
+        </a>
+    </div>
     <div id="content">
-
         {% for post in object_list %}
         <div class="post">
         <p class="des">{{ post.title }}</p>
-        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+            <a href="{% url 'blog_detail' post.id %}"><img src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+
         <p> <span class="des"> CREATE DATE :</span> {{ post.create_date }} </p>
         <p> <span class="des"> MODIFY DATE :</span> {{ post.modify_date }} </p>
         </div>

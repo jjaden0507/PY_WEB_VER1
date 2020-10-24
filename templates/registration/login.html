@@ -1,21 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SIGN IN</title>
+{% extends 'base.html' %}
 
-</head>
-<body>
-    <h1>REGISTER PAGE</h1>
 
-    <form method='post' action="."> {% csrf_token %}
-        <div>
-            {{ form.username.label_tag }} {{ form.username }}
+
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 id="title">Login page</h1>
+    <br>
+    <br>
+
+    <div class="row md">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 rdiv">
+            <br>
+            <div class="userimg"><svg width="10em" height="10em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="black" xmlns="http://www.w3.org/2000/svg">
+  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+</svg></div>
+            <br>
+            <form method='post' action="."> {% csrf_token %}
+                <div class="row md">
+                    <div class="col-md-6 label">USERNAME <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="black" xmlns="http://www.w3.org/2000/svg">
+  <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+  <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+</svg> </div>
+                    <div class="col-md-6 input">{{ form.username }}</div>
+
+                    <div class="col-md-6 label">PASSWORD <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="black" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+  <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+</svg> </div>
+                    <div class="col-md-6 input">{{ form.password }}</div>
+
+                </div>
+                <br>
+                <div id="buttondiv">
+                    <button type="submit"> SIGN IN </button>
+                </div>
+            </form>
+            <br>
         </div>
-        <div>
-            {{ form.password.label_tag }} {{ form.password }}
-        <button type="submit"> SIGN IN </button>
-        <input type="hidden" value=" {{ next }} ">
-    </form>
-</body>
-</html>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock content %}

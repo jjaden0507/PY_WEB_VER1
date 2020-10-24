@@ -4,6 +4,8 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 
+class djangoView(TemplateView):
+    template_name = 'django.html'
 
 class IndexView(TemplateView):
     template_name = 'index.html'
