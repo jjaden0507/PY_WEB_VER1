@@ -55,6 +55,16 @@
         .userimg{
             text-align: center;
         }
+        span {
+            color: firebrick;
+            font-size: 64px;
+        }
+        blbutton {
+            font-size: 40px;
+            border: 3px solid lightpink;
+            text-align: center;
+        }
+
     </style>
   </head>
   <body>
@@ -70,8 +80,8 @@
             <div class="col-md-3"></div>
             <div class="col-md-3"></div>
             <div class="col-md-3 hello">Hello, <strong>{{ user.get_username }}</strong></div>
-            <div class="col-md-3"><a href="{% url 'login' %}">SIGN IN</a>
-            <a href="{% url 'register' %}">SIGN UP</a></div>
+            <div class="col-md-3"><a href="{% url 'login' %}">LOGOUT</a>
+            <a href="{% url 'register' %}">PWCHANGE</a></div>
         </div>
 
     {% else %}
@@ -80,7 +90,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-3"></div>
             <div class="col-md-3 hello">Hello,anonymous</div>
-            <div class="col-md-3"><a href="{% url 'login' %}">SIGN IN</a>
+            <div class="col-md-3"><a href="{% url 'login' %}">LOGIN</a>
             <a href="{% url 'register' %}">SIGN UP</a></div>
         </div>
     {% endif %}

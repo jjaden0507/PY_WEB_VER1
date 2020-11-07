@@ -1,50 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-       <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>DJANGO BOOKMARK INDEX PAGE</title>
-    <style>
-        span {
-            font-size: 64px;
-            color: firebrick;
+{% extends 'base.html' %}
 
-        }
-        *{
-            font-family: 'Nanum Gothic', sans-serif;
-        }
-        ul {
-            display: inline-block;
-            list-style: none;
-        }
-        li {
-            margin-bottom: 20px;
-        }
-        a{
-            text-decoration: none;
-            color: darkslategray;
-            padding: 10px 20px;
-        }
-        a:hover {
-            background-color: dimgray;
-            color: darkkhaki;
-        }
-    </style>
-</head>
-<body>
-<div id="contents">
-    <h1><span>최</span>고로 <span>애</span>정하는 <span>유 </span>튜브</h1>
 
-    <a href="{% url 'bookmark_create' %}">
-        <button>CREATE</button>
-    </a>
-    <ul>
 
-        {% for bookmark in object_list %}
 
-        <li><a href=" {% url 'detail' bookmark.id %} "> {{bookmark }}</a></li>
-        {% endfor %}
-    </ul>
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+
+
+</style>
+<div class="container-fluid">
+    <div class="row md">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 contents">
+              <h1><span>최</span>고로 <span>애</span>정하는 <span>유 </span>튜브</h1>
+
+            {% if user.is_active %}
+            <a href="{% url 'bookmark_create' %}">
+                <button id="blbutton">CREATE</button>
+            </a>
+            {% endif%}
+            <ul>
+            {% for bookmark in object_list %}
+
+            <li><a href=" {% url 'detail' bookmark.id %} "> {{bookmark }}</a></li>
+             {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 </div>
-</body>
-</html>
+
+{% endblock content %}

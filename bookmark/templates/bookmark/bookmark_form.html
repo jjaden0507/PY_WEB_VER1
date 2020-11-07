@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+
+
+
+
+{% load staticfiles %}
+
+{% block content %}
+
     <title>Bokkmark Add/Update</title>
-</head>
-<body>
+
 <form action="" method="post"> {% csrf_token %}
     <div>
         {{ form.title.label_tag }} {{ form.title }}
@@ -14,5 +18,6 @@
     </div>
     <button type="submit"> CREATE/UPDATE </button>
 </form>
-</body>
-</html>
+
+{% endblock content%}
+
